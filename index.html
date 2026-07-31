@@ -1,178 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW1LPEEZMQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-QW1LPEEZMQ');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Building something big — Amir Nissim</title>
-  <meta name="description" content="Exploring what's next.">
-  <meta property="og:title" content="Building something big">
-  <meta property="og:description" content="Exploring what's next.">
+  <meta name="description"
+    content="Looking for a hard problem to solve over the next decade and the right partners to take it on with.">
+  <meta property="og:title" content="We're building something big">
+  <meta property="og:description"
+    content="Looking for a hard problem to solve over the next decade and the right partners to take it on with.">
   <meta property="og:url" content="https://buildingsomethingbig.com">
   <meta property="og:type" content="website">
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='20' y='55' width='60' height='25' fill='%23f97316'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='20' y='55' width='60' height='25' fill='%23ff8c42'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=Manrope:wght@400;600&display=swap"
+    rel="stylesheet">
   <style>
-    :root {
-      --bg: #0c0a09;
-      --text: #fafaf9;
-      --muted: #a8a29e;
-      --accent: #f97316;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      -webkit-text-size-adjust: 100%;
-    }
-
     body {
-      background: var(--bg);
-      background-image: radial-gradient(ellipse 80% 60% at 50% 115%, rgba(249, 115, 22, 0.13), transparent 70%);
-      color: var(--text);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-      text-align: center;
+      margin: 0;
+      background: #0a0a0a;
     }
 
-    main {
-      max-width: 40rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.75rem;
-      animation: rise 0.9s ease-out both;
-    }
-
-    @keyframes rise {
+    @keyframes riseIn {
       from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(18px);
       }
 
       to {
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
       }
     }
 
-    h1 {
-      font-size: clamp(2.4rem, 8vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-    }
+    @keyframes drift {
+      0% {
+        transform: translate(-6%, -4%) scale(1);
+      }
 
-    .cursor {
-      display: inline-block;
-      width: 0.55em;
-      height: 0.09em;
-      margin-left: 0.12em;
-      background: var(--accent);
-      vertical-align: baseline;
-      animation: blink 1.1s steps(1) infinite;
+      50% {
+        transform: translate(4%, 6%) scale(1.08);
+      }
+
+      100% {
+        transform: translate(-6%, -4%) scale(1);
+      }
     }
 
     @keyframes blink {
-      50% {
+
+      0%,
+      45% {
+        opacity: 1;
+      }
+
+      50%,
+      95% {
         opacity: 0;
       }
-    }
 
-    .nowrap {
-      white-space: nowrap;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      main {
-        animation: none;
-      }
-
-      .cursor {
-        animation: none;
+      100% {
+        opacity: 1;
       }
     }
 
-    .sub {
-      font-size: clamp(1.05rem, 3vw, 1.25rem);
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 34rem;
+    a {
+      color: #f5f2ea;
     }
 
-    .ask {
-      font-size: clamp(1rem, 2.6vw, 1.1rem);
-      color: var(--text);
-      line-height: 1.7;
-      max-width: 33rem;
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 0.5rem;
-      background: var(--accent);
-      color: #1c1007;
-      font-weight: 600;
-      font-size: 1.05rem;
-      padding: 0.85rem 2.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(249, 115, 22, 0.35);
-    }
-
-    footer {
-      margin-top: 4rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(168, 162, 158, 0.35);
-      transition: color 0.15s ease;
-    }
-
-    footer a:hover {
-      color: var(--text);
-    }
-
-    footer .sep {
-      margin: 0 0.6rem;
-      opacity: 0.5;
+    a:hover {
+      color: #ffffff;
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <h1>We're Building <span class="nowrap">something big<span class="cursor" aria-hidden="true"></span></span></h1>
-    <p class="sub">Exploring what's next.</p>
-    <p class="ask">Looking for a hard problem to solve over the next decade and the right partners to take it on with.
-      If you're building, or you see something broken that shouldn't be — let's talk.</p>
-    <a class="cta" href="https://meet.amirnissim.com">Let's talk</a>
-  </main>
-  <footer>
-    Amir Nissim
-    <span class="sep">·</span>
-    <a href="https://www.linkedin.com/in/amirni/">LinkedIn</a>
-    <span class="sep">·</span>
-    <a href="mailto:amir@buildingsomethingbig.com">Email</a>
-  </footer>
+  <div
+    style="position:relative; width:100%; min-height:100vh; background:#0a0a0a; overflow:hidden; font-family:'Manrope',sans-serif; color:#f5f2ea; box-sizing:border-box;">
+
+    <div
+      style="position:absolute; top:-30%; left:-10%; width:70%; height:80%; background:radial-gradient(circle at 30% 30%, rgba(255,140,66,0.16), transparent 60%); filter:blur(40px); animation:drift 22s ease-in-out infinite; pointer-events:none;">
+    </div>
+    <div
+      style="position:absolute; bottom:-30%; right:-15%; width:70%; height:80%; background:radial-gradient(circle at 70% 70%, rgba(120,140,255,0.12), transparent 60%); filter:blur(40px); animation:drift 26s ease-in-out infinite reverse; pointer-events:none;">
+    </div>
+
+    <div
+      style="position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size:64px 64px; -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 90%); mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 90%); pointer-events:none;">
+    </div>
+
+    <div
+      style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:48px 24px; text-align:center;">
+
+      <div
+        style="display:flex; align-items:center; gap:10px; padding:8px 16px; border:1px solid rgba(245,242,234,0.18); border-radius:999px; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#c9c3b4; margin-bottom:40px; opacity:0; animation:riseIn 0.7s ease-out 0.1s forwards;">
+        <span
+          style="width:7px; height:7px; border-radius:50%; background:#ff8c42; box-shadow:0 0 10px 2px rgba(255,140,66,0.6);"></span>
+        In Progress
+      </div>
+
+      <h1
+        style="font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:clamp(40px, 8vw, 96px); line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:16ch; opacity:0; animation:riseIn 0.8s ease-out 0.25s forwards;">
+        We're building<br>something big<span
+          style="display:inline-block; width:0.5ch; color:#ff8c42; animation:blink 1.1s step-end infinite;">_</span>
+      </h1>
+
+      <p
+        style="font-size:clamp(16px, 2vw, 19px); line-height:1.6; color:#a9a297; max-width:46ch; margin:28px 0 0; opacity:0; animation:riseIn 0.8s ease-out 0.4s forwards;">
+        Looking for a hard problem to solve over the next decade and the right partners to take it on with. If you're
+        building, or you see something broken that shouldn't be — let's talk.
+      </p>
+
+      <div style="margin-top:40px; opacity:0; animation:riseIn 0.8s ease-out 0.55s forwards;">
+        <a href="https://meet.amirnissim.com"
+          style="display:inline-block; padding:15px 32px; border-radius:10px; background:#f5f2ea; color:#0a0a0a; font-family:'Manrope',sans-serif; font-weight:600; font-size:15px; text-decoration:none; white-space:nowrap;">Let's
+          talk</a>
+      </div>
+
+      <p
+        style="margin-top:16px; font-size:13px; color:#6f6a60; opacity:0; animation:riseIn 0.8s ease-out 0.55s forwards;">
+        Amir Nissim
+        <span style="margin:0 6px; opacity:0.5;">·</span>
+        <a href="https://www.linkedin.com/in/amirni/" style="color:#6f6a60;">LinkedIn</a>
+        <span style="margin:0 6px; opacity:0.5;">·</span>
+        <a href="mailto:amir@buildingsomethingbig.com" style="color:#6f6a60;">Email</a>
+      </p>
+
+      <div
+        style="position:absolute; bottom:36px; left:0; right:0; display:flex; justify-content:center; opacity:0; animation:riseIn 0.8s ease-out 0.7s forwards;">
+        <span
+          style="font-family:'Bricolage Grotesque', sans-serif; font-size:14px; letter-spacing:0.04em; color:#5f5a51;">buildingsomethingbig.com</span>
+      </div>
+
+    </div>
+  </div>
 </body>
 
 </html>
